@@ -28,7 +28,7 @@ map <leader>o :BufExplorer<cr>
 " => MRU plugin
 """"""""""""""""""""""""""""""
 let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
+map <leader>g :MRU<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -41,16 +41,13 @@ nmap <c-n> <Plug>yankstack_substitute_newer_paste
 
 
 """"""""""""""""""""""""""""""
-" => CTRL-P
+" => FZF
 """"""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
+let $FZF_DEFAULT_COMMAND =  "rg --files --no-ignore --hidden --follow --glob '!.git/*'"
+let g:fzf_layout = { 'down': '~20%' }
 
-let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
-
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+nnoremap <silent> <leader>j :Files<CR>
+    
 
 
 """"""""""""""""""""""""""""""
@@ -147,7 +144,7 @@ let g:go_fmt_command = "goimports"
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['jshint'],
+\   'javascript': ['eslint', 'flow'],
 \   'python': ['flake8'],
 \   'go': ['go', 'golint', 'errcheck']
 \}
